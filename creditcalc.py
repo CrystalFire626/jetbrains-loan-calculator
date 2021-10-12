@@ -4,7 +4,7 @@ import sys
 parser = argparse.ArgumentParser()
 
 parser.add_argument("--type")
-parser.add_argument("--payment", type=int)
+parser.add_argument("--payment")
 parser.add_argument("--principal", type=int)
 parser.add_argument("--periods", type=int)
 parser.add_argument("--interest", type=float)
