@@ -3,7 +3,7 @@ import argparse
 import sys
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--type")
+parser.add_argument("--type", type=str)
 parser.add_argument("--payment", type=int)
 parser.add_argument("--principal", type=int)
 parser.add_argument("--periods", type=int)
@@ -15,13 +15,13 @@ parameters = [args.type, args.payment, args.principal, args.periods, args.intere
 negative_numbers = []
 
 for i in parameters:
-    if type(i) == int or type(i) == float:
+    if isinstance(i, (int, float)):
         if i < 0:
             negative_numbers.append(i)
 
-if args.type != "annuity" and args.type != "diff":
+if args.type not in ["annuity", "diff"]:
     print("Incorrect parameters")
-
+    sys.exit()
 if args.type == "diff" and args.payment is not None:
     print("Incorrect parameters")
     sys.exit()
